@@ -1,0 +1,23 @@
+[submodule "api-gateway"]
+	path = api-gateway
+	url = https://github.com/tRUStworthyq/api-gateway.git
+
+[submodule "client-service"]
+	path = client-service
+	url = https://github.com/tRUStworthyq/client-repository.git
+
+[submodule "currency-service"]
+	path = currency-service
+	url = https://github.com/tRUStworthyq/currency-service.git
+
+[submodule "deal-service"]
+	path = deal-service
+	url = https://github.com/tRUStworthyq/deal-service.git
+
+[submodule "risk-service"]
+	path = risk-service
+	url = https://github.com/tRUStworthyq/risk-serivce.git
+
+[submodule "common-dto"]
+	path = common-dto
+	url = https://github.com/tRUStworthyq/common-dto.git
