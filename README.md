@@ -63,7 +63,7 @@
 | `logstash` | **5000** | Приём логов (TCP/UDP) |
 | `kibana` | **5601** | Просмотр логов |
 | `prometheus` | **9090** | Сбор метрик |
-| `grafana` | **3000** | Дашборды (admin / admin) |
+| `grafana` | **3000** | Дашборды (логин задаётся в `.env`) |
 | `jaeger` | **16686** | UI распределённой трассировки |
 
 ---
@@ -83,7 +83,25 @@ cd credits
 git submodule update --init --recursive
 ```
 
-### 2. Запуск стека
+### 2. Настройка переменных окружения
+
+Скопируйте файл примера и задайте свои значения:
+
+```bash
+cp .env.example .env
+```
+
+Отредактируйте `.env` — замените пароли и секреты на собственные. Файл `.env` прочитывается Docker Compose автоматически и **не попадает в репозиторий** (включён в `.gitignore`).
+
+| Переменная | Описание |
+|---|---|
+| `POSTGRES_DEAL_USER` / `POSTGRES_DEAL_PASSWORD` | Учётные данные БД сделок |
+| `POSTGRES_KEYCLOAK_USER` / `POSTGRES_KEYCLOAK_PASSWORD` | Учётные данные БД Keycloak |
+| `KEYCLOAK_ADMIN_USER` / `KEYCLOAK_ADMIN_PASSWORD` | Администратор Keycloak |
+| `KC_CLIENT_SECRET` | OAuth2-секрет клиента `api-gateway` (должен совпадать с `keycloak/realm-export.json`) |
+| `GRAFANA_ADMIN_USER` / `GRAFANA_ADMIN_PASSWORD` | Администратор Grafana |
+
+### 3. Запуск стека
 
 ```bash
 docker compose up -d
@@ -97,20 +115,20 @@ docker compose ps
 
 Все сервисы приложения должны перейти в статус `healthy` или `running`.
 
-### 3. Первоначальная настройка Keycloak
+### 4. Первоначальная настройка Keycloak
 
 Realm `sber-realm` импортируется автоматически при старте контейнера.
 
-1. Открыть [http://localhost:8080](http://localhost:8080) → войти `admin` / `admin`
+1. Открыть [http://localhost:8080](http://localhost:8080) → войти с данными `KEYCLOAK_ADMIN_USER` / `KEYCLOAK_ADMIN_PASSWORD` из `.env`
 2. Убедиться, что в левом верхнем углу выбран realm **sber-realm**
 3. Создать пользователя: **Users → Add user** — заполнить Email, First name, Last name, Phone; включить **Email verified**
 4. Перейти на вкладку **Credentials → Set password** — задать пароль, выключить **Temporary**
 
-### 4. Открыть приложение
+### 5. Открыть приложение
 
 [http://localhost:8085](http://localhost:8085) — вход выполняется через Keycloak SSO.
 
-### 5. Остановка
+### 6. Остановка
 
 ```bash
 docker compose down

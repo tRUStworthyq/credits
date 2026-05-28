@@ -4,9 +4,9 @@ services:
     container_name: postgres-deal
     restart: unless-stopped
     environment:
-      POSTGRES_DB: deal_db
-      POSTGRES_USER: deal_user
-      POSTGRES_PASSWORD: deal_pass
+      POSTGRES_DB: ${POSTGRES_DEAL_DB}
+      POSTGRES_USER: ${POSTGRES_DEAL_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_DEAL_PASSWORD}
     volumes:
       - postgres_deal_data:/var/lib/postgresql/data
     deploy:
@@ -14,7 +14,7 @@ services:
         limits:
           memory: 300m
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U deal_user -d deal_db"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_DEAL_USER} -d ${POSTGRES_DEAL_DB}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -24,9 +24,9 @@ services:
     container_name: postgres-keycloak
     restart: unless-stopped
     environment:
-      POSTGRES_DB: keycloak_db
-      POSTGRES_USER: keycloak_user
-      POSTGRES_PASSWORD: keycloak_pass
+      POSTGRES_DB: ${POSTGRES_KEYCLOAK_DB}
+      POSTGRES_USER: ${POSTGRES_KEYCLOAK_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_KEYCLOAK_PASSWORD}
     volumes:
       - postgres_keycloak_data:/var/lib/postgresql/data
     deploy:
@@ -34,7 +34,7 @@ services:
         limits:
           memory: 300m
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U keycloak_user -d keycloak_db"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_KEYCLOAK_USER} -d ${POSTGRES_KEYCLOAK_DB}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -133,17 +133,17 @@ services:
     container_name: keycloak
     restart: unless-stopped
     environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN_USER}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
       KC_HOSTNAME: http://keycloak:8080
       KC_HOSTNAME_STRICT: "false"
       KC_HOSTNAME_STRICT_HTTPS: "false"
       KC_HTTP_ENABLED: "true"
       KC_HEALTH_ENABLED: true
       KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://postgres-keycloak:5432/keycloak_db
-      KC_DB_USERNAME: keycloak_user
-      KC_DB_PASSWORD: keycloak_pass
+      KC_DB_URL: jdbc:postgresql://postgres-keycloak:5432/${POSTGRES_KEYCLOAK_DB}
+      KC_DB_USERNAME: ${POSTGRES_KEYCLOAK_USER}
+      KC_DB_PASSWORD: ${POSTGRES_KEYCLOAK_PASSWORD}
     volumes:
       - ./keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json:ro
       - ./keycloak/themes:/opt/keycloak/themes:ro
@@ -264,8 +264,8 @@ services:
     container_name: grafana
     restart: unless-stopped
     environment:
-      GF_SECURITY_ADMIN_USER: admin
-      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning:ro
@@ -313,6 +313,9 @@ services:
     restart: unless-stopped
     environment:
       SPRING_PROFILES_ACTIVE: docker
+      POSTGRES_DEAL_DB: ${POSTGRES_DEAL_DB}
+      POSTGRES_DEAL_USER: ${POSTGRES_DEAL_USER}
+      POSTGRES_DEAL_PASSWORD: ${POSTGRES_DEAL_PASSWORD}
       MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://jaeger:14268/api/traces
       LOGGING_LOGSTASH_ENCODER_DESTINATION: logstash:5000
     depends_on:
@@ -348,6 +351,9 @@ services:
     restart: unless-stopped
     environment:
       SPRING_PROFILES_ACTIVE: docker
+      POSTGRES_DEAL_DB: ${POSTGRES_DEAL_DB}
+      POSTGRES_DEAL_USER: ${POSTGRES_DEAL_USER}
+      POSTGRES_DEAL_PASSWORD: ${POSTGRES_DEAL_PASSWORD}
       MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://jaeger:14268/api/traces
       LOGGING_LOGSTASH_ENCODER_DESTINATION: logstash:5000
     depends_on:
@@ -368,6 +374,9 @@ services:
     restart: unless-stopped
     environment:
       SPRING_PROFILES_ACTIVE: docker
+      POSTGRES_DEAL_DB: ${POSTGRES_DEAL_DB}
+      POSTGRES_DEAL_USER: ${POSTGRES_DEAL_USER}
+      POSTGRES_DEAL_PASSWORD: ${POSTGRES_DEAL_PASSWORD}
       MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://jaeger:14268/api/traces
       LOGGING_LOGSTASH_ENCODER_DESTINATION: logstash:5000
       MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health,info,prometheus,metrics
@@ -416,6 +425,7 @@ services:
       - "8085:8080"
     environment:
       SPRING_PROFILES_ACTIVE: docker
+      KC_CLIENT_SECRET: ${KC_CLIENT_SECRET}
       DEAL_SERVICE_URL: http://deal-service:8080
       MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://jaeger:14268/api/traces
       LOGGING_LOGSTASH_ENCODER_DESTINATION: logstash:5000

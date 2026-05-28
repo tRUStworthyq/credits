@@ -40,3 +40,6 @@ build/
 .idea/
 
 mock-producer/settings.xml
+
+### Environment secrets ###
+.env
