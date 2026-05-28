@@ -270,7 +270,7 @@ services:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning:ro
     ports:
-      - "3001:3000"
+      - "3000:3000"
     deploy:
       resources:
         limits:
@@ -282,7 +282,9 @@ services:
 
 
   currency-service:
-    image: admin194/currency-service:latest
+    build:
+      context: ./currency-service
+      dockerfile: Dockerfile
     container_name: currency-service
     restart: unless-stopped
     environment:
@@ -304,7 +306,9 @@ services:
 
 
   deal-service:
-    image: admin194/deal-service:latest
+    build:
+      context: ./deal-service
+      dockerfile: Dockerfile
     container_name: deal-service
     restart: unless-stopped
     environment:
@@ -337,7 +341,9 @@ services:
       retries: 10
 
   client-service:
-    image: admin194/client-service:latest
+    build:
+      context: ./client-service
+      dockerfile: Dockerfile
     container_name: client-service
     restart: unless-stopped
     environment:
@@ -355,7 +361,9 @@ services:
           memory: 896m
 
   risk-service:
-    image: admin194/risk-service:latest
+    build:
+      context: ./risk-service
+      dockerfile: Dockerfile
     container_name: risk-service
     restart: unless-stopped
     environment:
@@ -376,50 +384,8 @@ services:
         limits:
           memory: 896m
 
-  frontend:
-    image: admin194/frontend:latest
-    container_name: frontend
-    restart: unless-stopped
-    environment:
-      NODE_ENV: production
-    deploy:
-      resources:
-        limits:
-          memory: 512m
-    healthcheck:
-      test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost:3000/ui || exit 1"]
-      interval: 15s
-      timeout: 5s
-      retries: 5
-
-  api-gateway:
-    image: admin194/api-gateway:latest
-    container_name: api-gateway
-    restart: unless-stopped
-    ports:
-      - "8085:8080"
-    environment:
-      SPRING_PROFILES_ACTIVE: docker
-      DEAL_SERVICE_URL: http://deal-service:8080
-      TRANSACTION_SERVICE_URL: http://transaction-service:8080
-      FRONTEND_URL: http://frontend:3000
-      MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://jaeger:14268/api/traces
-      LOGGING_LOGSTASH_ENCODER_DESTINATION: logstash:5000
-      JAVA_TOOL_OPTIONS: "-Xms256m -Xmx512m"
-    depends_on:
-      keycloak:
-        condition: service_started
-      deal-service:
-        condition: service_healthy
-      frontend:
-        condition: service_started
-    deploy:
-      resources:
-        limits:
-          memory: 896m
-
   transaction-service:
-    image: admin194/transaction-service:latest
+    build: ./transaction-service
     container_name: transaction-service
     restart: unless-stopped
     environment:
@@ -439,6 +405,46 @@ services:
       resources:
         limits:
           memory: 768m
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    restart: unless-stopped
+    ports:
+      - "8085:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      DEAL_SERVICE_URL: http://deal-service:8080
+      MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://jaeger:14268/api/traces
+      LOGGING_LOGSTASH_ENCODER_DESTINATION: logstash:5000
+      JAVA_TOOL_OPTIONS: "-Xms256m -Xmx512m"
+    depends_on:
+      keycloak:
+        condition: service_started
+      deal-service:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 896m
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+    healthcheck:
+      test: [ "CMD-SHELL", "wget -q -O /dev/null http://localhost:3000/ui || exit 1" ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres_deal_data:

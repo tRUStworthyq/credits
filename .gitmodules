@@ -21,3 +21,11 @@
 [submodule "common-dto"]
 	path = common-dto
 	url = https://github.com/tRUStworthyq/common-dto.git
+
+[submodule "frontend"]
+    path = frontend
+    url = https://github.com/tRUStworthyq/frontend.git
+
+[submodule "transaction-service"]
+    path = transaction-service
+    url = https://github.com/tRUStworthyq/transaction-service.git

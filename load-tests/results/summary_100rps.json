@@ -1,0 +1,239 @@
+{
+    "metrics": {
+        "err_latency": {
+            "passes": 0,
+            "fails": 59967,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        },
+        "err_status": {
+            "passes": 0,
+            "fails": 59967,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "http_req_connecting": {
+            "avg": 0.002035961653287336,
+            "min": 0,
+            "med": 0,
+            "max": 1.0034,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "checks": {
+            "passes": 179901,
+            "fails": 0,
+            "value": 1
+        },
+        "iterations": {
+            "count": 60000,
+            "rate": 97.92811938709121
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 31.27635998639965,
+            "min": 0.5261,
+            "med": 18.905450000000002,
+            "max": 1431.7191,
+            "p(90)": 23.032170000000004,
+            "p(95)": 31.95460499999999
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 60292,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        },
+        "http_req_blocked": {
+            "avg": 0.0028777051681815134,
+            "min": 0,
+            "med": 0,
+            "max": 5.8976,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "data_sent": {
+            "count": 18041993,
+            "rate": 29446.974074751066
+        },
+        "vus_max": {
+            "value": 150,
+            "min": 150,
+            "max": 150
+        },
+        "iteration_duration": {
+            "p(95)": 30.531944999999986,
+            "avg": 31.34963764333327,
+            "min": 12.7862,
+            "med": 19.0004,
+            "max": 1431.7191,
+            "p(90)": 23.065349999999995
+        },
+        "http_req_receiving": {
+            "avg": 0.279690124726333,
+            "min": 0,
+            "med": 0,
+            "max": 231.4163,
+            "p(90)": 0.6108800000000003,
+            "p(95)": 1.0005
+        },
+        "http_req_tls_handshaking": {
+            "p(95)": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0
+        },
+        "http_req_waiting": {
+            "p(95)": 31.01626499999992,
+            "avg": 30.99541702879343,
+            "min": 0.5261,
+            "med": 18.7023,
+            "max": 1431.1827,
+            "p(90)": 22.98831
+        },
+        "data_received": {
+            "count": 44514483,
+            "rate": 72653.66009464403
+        },
+        "session_redirects": {
+            "count": 33,
+            "rate": 0.05386046566290017,
+            "thresholds": {
+                "count<200": false
+            }
+        },
+        "vus": {
+            "value": 2,
+            "min": 0,
+            "max": 130
+        },
+        "http_req_duration{name:calculate}": {
+            "avg": 30.909006115000132,
+            "min": 12.6199,
+            "med": 18.903,
+            "max": 1431.7191,
+            "p(90)": 23.0002,
+            "p(95)": 30.12623,
+            "thresholds": {
+                "p(95)<2000": false,
+                "p(99)<5000": false
+            }
+        },
+        "http_reqs": {
+            "count": 60292,
+            "rate": 98.40470290144172
+        },
+        "calc_latency_ms": {
+            "avg": 30.909006115000132,
+            "min": 12.6199,
+            "med": 18.903,
+            "max": 1431.7191,
+            "p(90)": 23.0002,
+            "p(95)": 30.12623
+        },
+        "http_req_sending": {
+            "min": 0,
+            "med": 0,
+            "max": 3.2011,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.0012528328799840764
+        },
+        "err_body": {
+            "passes": 0,
+            "fails": 59967,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "http_req_duration": {
+            "med": 18.905450000000002,
+            "max": 1431.7191,
+            "p(90)": 23.032170000000004,
+            "p(95)": 31.95460499999999,
+            "avg": 31.27635998639965,
+            "min": 0.5261
+        }
+    },
+    "setup_data": {
+        "sessions": [
+            "JSESSIONID=AA6A3BCD737FF433D36C005E672AFD47",
+            "JSESSIONID=CAEF7AEC99BBF20F4CA442F592DB123D",
+            "JSESSIONID=5E9806FB1EF3EC82B4F9B047D7B3E5D5",
+            "JSESSIONID=CC3314A66758AB869CFDD59AAF9B642B",
+            "JSESSIONID=87CE1EF5C1D2D5D70D50E0B2377B241E",
+            "JSESSIONID=1D72998F62D67464ED25CC000729DEEB",
+            "JSESSIONID=9767E1AC1F003FD2E702B324CF8A98DA",
+            "JSESSIONID=C0DCB75FB5ACF2ADAB9BDDFC5A799167",
+            "JSESSIONID=551093603257BA5BDE411CDF6F48F8EE",
+            "JSESSIONID=6769C79FD0FEDE605FF18B8497192FF6",
+            "JSESSIONID=88941FAABB6ACE5F59333A0E8123AD56",
+            "JSESSIONID=D7BE8BDCE4AB85E501011C079EB979F9",
+            "JSESSIONID=733263876076702B43740D365C03C845",
+            "JSESSIONID=9DCE96609A080DD0A3ABC49B2A137C2B",
+            "JSESSIONID=C84724CC31CC61D69EF9C951643FA6B3",
+            "JSESSIONID=46BAAE4CA660B5325614DB79E01085F4",
+            "JSESSIONID=062EC569ADA4CCFB09F5A4E88CACFF4B",
+            "JSESSIONID=9E8A7E5C47569BD4EDB463D56AFC216D",
+            "JSESSIONID=A00468A6B46A5AEAF8B58E7DCBB09AFC",
+            "JSESSIONID=69B97EBA6F0F252F47499809D3524BF8",
+            "JSESSIONID=3FC8ECEC4FD41A85489BABD9B60F8EB7",
+            "JSESSIONID=48F961B81ED8ECDD80A1481406BEBCBC",
+            "JSESSIONID=44B6AFE72930FD21A4D7DD223C7F3ECD",
+            "JSESSIONID=2E5136AC7E7D713148A47E6901912FD8",
+            "JSESSIONID=F9DFC97159B8154CF4F957F8C27DD5FB",
+            "JSESSIONID=2C4E38E593676B0219CBAF738C2F27CD",
+            "JSESSIONID=8DF992FB8571F50956400F8EE612B4A7",
+            "JSESSIONID=B01773E271E7C92B7EB47FA8F3FCF6E1",
+            "JSESSIONID=25781972420AB0C54C26162FA1882AD0",
+            "JSESSIONID=0C302B4C9A435785A085469F6EAEF1B5",
+            "JSESSIONID=95DEB5BB0A78D931A43849DDC651B8CA",
+            "JSESSIONID=1B40140295B8A805E7E2A54FBEA8F787",
+            "JSESSIONID=41D6605F8ADD42B8285C1F4483AC57C3",
+            "JSESSIONID=21300F29CB718BB74EF175CD994D35FE",
+            "JSESSIONID=2D02455D4752C5D88859A9EE7D8D2739",
+            "JSESSIONID=396F000664F980D6D4F38B36B1B47ED7",
+            "JSESSIONID=E5FA3DD1959D773FCD92B4A3A8C62CA7",
+            "JSESSIONID=29CAF7A4D6C2DD9719D30745E9E7B909",
+            "JSESSIONID=1D9F78051E5BF2954F792AE55876E27A",
+            "JSESSIONID=C041697B93DCB3DC0B03D6BFFCD7249C"
+        ]
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "status 200": {
+                    "name": "status 200",
+                    "path": "::status 200",
+                    "id": "fad9fa412b86fcb03bee97c80dcd61f1",
+                    "passes": 59967,
+                    "fails": 0
+                },
+                "body present": {
+                    "path": "::body present",
+                    "id": "6e1f540843b26d161cf12df4ff640ca6",
+                    "passes": 59967,
+                    "fails": 0,
+                    "name": "body present"
+                },
+                "latency <5000ms": {
+                    "path": "::latency <5000ms",
+                    "id": "909675274ebbbe558875aa20ee23ef55",
+                    "passes": 59967,
+                    "fails": 0,
+                    "name": "latency <5000ms"
+                }
+            }
+    }
+}

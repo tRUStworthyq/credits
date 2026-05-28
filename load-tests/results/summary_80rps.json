@@ -1,0 +1,231 @@
+{
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "status 200": {
+                    "passes": 47940,
+                    "fails": 0,
+                    "name": "status 200",
+                    "path": "::status 200",
+                    "id": "fad9fa412b86fcb03bee97c80dcd61f1"
+                },
+                "body present": {
+                    "path": "::body present",
+                    "id": "6e1f540843b26d161cf12df4ff640ca6",
+                    "passes": 47940,
+                    "fails": 0,
+                    "name": "body present"
+                },
+                "latency <5000ms": {
+                    "path": "::latency <5000ms",
+                    "id": "909675274ebbbe558875aa20ee23ef55",
+                    "passes": 47940,
+                    "fails": 0,
+                    "name": "latency <5000ms"
+                }
+            }
+    },
+    "metrics": {
+        "iterations": {
+            "count": 48000,
+            "rate": 79.4058866384146
+        },
+        "err_latency": {
+            "passes": 0,
+            "fails": 47940,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        },
+        "http_req_blocked": {
+            "med": 0,
+            "max": 4.2608,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.0028159547634799874,
+            "min": 0
+        },
+        "checks": {
+            "passes": 143820,
+            "fails": 0,
+            "value": 1
+        },
+        "http_req_duration": {
+            "avg": 20.663510641333172,
+            "min": 0.5252,
+            "med": 18.6615,
+            "max": 791.4045,
+            "p(90)": 20.49132,
+            "p(95)": 22.309755000000003
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 20.663510641333172,
+            "min": 0.5252,
+            "med": 18.6615,
+            "max": 791.4045,
+            "p(90)": 20.49132,
+            "p(95)": 22.309755000000003
+        },
+        "http_req_tls_handshaking": {
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0,
+            "min": 0
+        },
+        "http_req_duration{name:calculate}": {
+            "p(95)": 22.0007,
+            "avg": 19.972543250000058,
+            "min": 13.2375,
+            "med": 18.659,
+            "max": 422.8631,
+            "p(90)": 20.424429999999997,
+            "thresholds": {
+                "p(95)<2000": false,
+                "p(99)<5000": false
+            }
+        },
+        "vus_max": {
+            "value": 150,
+            "min": 150,
+            "max": 150
+        },
+        "session_redirects": {
+            "rate": 0.09925735829801825,
+            "count": 60,
+            "thresholds": {
+                "count<160": false
+            }
+        },
+        "iteration_duration": {
+            "min": 14.0505,
+            "med": 18.7336,
+            "max": 1193.5494,
+            "p(90)": 20.609779999999997,
+            "p(95)": 22.180099999999992,
+            "avg": 20.816794945833323
+        },
+        "err_status": {
+            "passes": 0,
+            "fails": 47940,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "http_req_connecting": {
+            "med": 0,
+            "max": 1.0041,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.001976126778035064,
+            "min": 0
+        },
+        "http_req_sending": {
+            "min": 0,
+            "med": 0,
+            "max": 1.0022,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.0012629259014224278
+        },
+        "http_req_receiving": {
+            "avg": 0.08261136288455195,
+            "min": 0,
+            "med": 0,
+            "max": 154.0801,
+            "p(90)": 0.5199,
+            "p(95)": 0.5435650000000001
+        },
+        "data_sent": {
+            "count": 14535772,
+            "rate": 24046.372159038357
+        },
+        "err_body": {
+            "passes": 0,
+            "fails": 47940,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "vus": {
+            "max": 37,
+            "value": 2,
+            "min": 0
+        },
+        "calc_latency_ms": {
+            "max": 422.8631,
+            "p(90)": 20.424429999999997,
+            "p(95)": 22.0007,
+            "avg": 19.972543250000058,
+            "min": 13.2375,
+            "med": 18.659
+        },
+        "http_reqs": {
+            "count": 48368,
+            "rate": 80.01466510264245
+        },
+        "data_received": {
+            "count": 35829496,
+            "rate": 59272.352035156866
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 48368,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        },
+        "http_req_waiting": {
+            "avg": 20.57963635254716,
+            "min": 0,
+            "med": 18.6293,
+            "max": 790.8547,
+            "p(90)": 20.35359,
+            "p(95)": 22.048865
+        }
+    },
+    "setup_data": {
+        "sessions": [
+            "JSESSIONID=F7EF168F395C34D592411D9FCA278314",
+            "JSESSIONID=0DB9DA066F5058AD3729BDABAA2AA2FF",
+            "JSESSIONID=5E99A7ABCF6A9372CCE1A19525F205C6",
+            "JSESSIONID=AB45CDEE0BE0E2088630C5A76361FED2",
+            "JSESSIONID=33B663198BF25F8CDA5000767F733DA1",
+            "JSESSIONID=0FF2F47938D030F69E73070647F24681",
+            "JSESSIONID=0B2C017EF709DF268192D012C41F348A",
+            "JSESSIONID=1DA1A14E68F2A43573A1EE67BCCC32D4",
+            "JSESSIONID=2C85260B7EAB0AB94F68A0BA22E34D28",
+            "JSESSIONID=153E73EEF1A5413856B75D253114F412",
+            "JSESSIONID=28221E19ABA909FCEAD0D78A83FEBF19",
+            "JSESSIONID=EFB5F35C5E8CEE3F044C961A10504DA2",
+            "JSESSIONID=CADB99FA4A72D1A4B3461F33F3195603",
+            "JSESSIONID=5D241C78E655D7857A9771F7937116B3",
+            "JSESSIONID=C24174408E77CCB661047DCED72C3F16",
+            "JSESSIONID=AA84A64F9B4D4D0E36577D1F92E44625",
+            "JSESSIONID=E47376109D8EEF0C05C7EF3682B42D82",
+            "JSESSIONID=455972986BDB71FDF958897B16DC4838",
+            "JSESSIONID=7B694FA8B792F93191CBD21B2BD1C46A",
+            "JSESSIONID=7BC8C122657E67B9A2FF95C323B70541",
+            "JSESSIONID=AAA982D1ECBB9E4697EC6DEBB26528DA",
+            "JSESSIONID=72D6D264321E9EAE1B567EE51F078EE2",
+            "JSESSIONID=4EC2158321EA91CA3B9A6829375D5308",
+            "JSESSIONID=F653112A14FD3932F2CC5E228F051918",
+            "JSESSIONID=E7DB7DF4414FC27FD9DB7D555B217F52",
+            "JSESSIONID=ABA7D6D71D3BA86D211E3C2DAE41CE4A",
+            "JSESSIONID=F52D771B6D35460DDA2ED28FEC2B8EF6",
+            "JSESSIONID=3AE952E873FBF676AD5A218AFF23E7BE",
+            "JSESSIONID=F7D1CEB50EE3E25225FEF1375B01D556",
+            "JSESSIONID=B2D61CD485BA42F6E3F12BC5C4984076",
+            "JSESSIONID=E29AF8F5CCF6CA25B343EB43F0980476",
+            "JSESSIONID=8A36E1FAE06A4B11C9C797B132865BB7"
+        ]
+    }
+}

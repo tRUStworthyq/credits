@@ -1,0 +1,219 @@
+{
+    "metrics": {
+        "http_req_sending": {
+            "max": 1.0001,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.0008131602579802432,
+            "min": 0,
+            "med": 0
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 42.201109780390205,
+            "min": 0.9993,
+            "med": 19.7024,
+            "max": 5506.9099,
+            "p(90)": 23.180760000000003,
+            "p(95)": 27.106280000000016
+        },
+        "http_req_blocked": {
+            "min": 0,
+            "med": 0,
+            "max": 4.2423,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.0032864886929545264
+        },
+        "http_req_duration{name:calculate}": {
+            "avg": 24.252816231980674,
+            "min": 15.6285,
+            "med": 19.6829,
+            "max": 2954.8583,
+            "p(90)": 22.8867,
+            "p(95)": 25.0485,
+            "thresholds": {
+                "p(99)<5000": false,
+                "p(95)<2000": false
+            }
+        },
+        "err_body": {
+            "passes": 0,
+            "fails": 11959,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "http_req_receiving": {
+            "med": 0,
+            "max": 157.5765,
+            "p(90)": 0.5415,
+            "p(95)": 0.9969,
+            "avg": 0.16925535145726192,
+            "min": 0
+        },
+        "vus": {
+            "value": 1,
+            "min": 0,
+            "max": 43
+        },
+        "http_req_duration": {
+            "avg": 42.201109780390205,
+            "min": 0.9993,
+            "med": 19.7024,
+            "max": 5506.9099,
+            "p(90)": 23.180760000000003,
+            "p(95)": 27.106280000000016
+        },
+        "data_sent": {
+            "count": 3752839,
+            "rate": 6222.191112916364
+        },
+        "iterations": {
+            "count": 12001,
+            "rate": 19.897606997291724
+        },
+        "http_req_waiting": {
+            "p(95)": 26.818840000000044,
+            "avg": 42.03104126867498,
+            "min": 0.9993,
+            "med": 19.622,
+            "max": 5506.9099,
+            "p(90)": 23.001060000000003
+        },
+        "err_status": {
+            "passes": 0,
+            "fails": 11959,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "session_redirects": {
+            "count": 42,
+            "rate": 0.06963582150539559,
+            "thresholds": {
+                "count<100": false
+            }
+        },
+        "http_req_connecting": {
+            "max": 1.0032,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.002551481753612541,
+            "min": 0,
+            "med": 0
+        },
+        "calc_latency_ms": {
+            "min": 15.6285,
+            "med": 19.6829,
+            "max": 2954.8583,
+            "p(90)": 22.8867,
+            "p(95)": 25.0485,
+            "avg": 24.252816231980674
+        },
+        "http_reqs": {
+            "count": 12249,
+            "rate": 20.308789943323582
+        },
+        "checks": {
+            "passes": 35877,
+            "fails": 0,
+            "value": 1
+        },
+        "iteration_duration": {
+            "avg": 42.995027256061874,
+            "min": 15.6285,
+            "med": 19.851,
+            "max": 8683.5371,
+            "p(90)": 23.1207,
+            "p(95)": 25.4175
+        },
+        "vus_max": {
+            "value": 150,
+            "min": 150,
+            "max": 150
+        },
+        "err_latency": {
+            "passes": 0,
+            "fails": 11959,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "data_received": {
+            "count": 9212248,
+            "rate": 15273.868033129464
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 12249,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        }
+    },
+    "setup_data": {
+        "sessions": [
+            "JSESSIONID=A76C92496D0AC7AF42DEC72C26299B7C",
+            "JSESSIONID=E831D547F7508AE07F22892482CEB7AB",
+            "JSESSIONID=A26B845B016C9CB551BCCAF2DE12017A",
+            "JSESSIONID=C9528ABD06E2CCC61EEE6CD8BD7AAED1",
+            "JSESSIONID=11A28F27823EC4B98F2F59443378F023",
+            "JSESSIONID=E2598B190E8BCA1DDEBF533C0F38602B",
+            "JSESSIONID=FD6A94A2F42C2BB271D79A17A150929D",
+            "JSESSIONID=722DC5D2450E7CD629B98395AC226A81",
+            "JSESSIONID=681BFB0F9440B72DD23828BC5C380FA5",
+            "JSESSIONID=80A16EF2F7DE3F13D3ACFD1C7871B8AB",
+            "JSESSIONID=46E70C0B63BC0E39336C8DF7EC7FE044",
+            "JSESSIONID=08099C8D1AB5EE5ACB8D371838E81CA5",
+            "JSESSIONID=7EBB050218B5FB47635F18FBE53937A8",
+            "JSESSIONID=4A21F3A2E16CE69155C6483A9FD563FD",
+            "JSESSIONID=9044789A1C70EDEE96A988330C64B57E",
+            "JSESSIONID=519DEB1710F26C0E532F8B738CBD3FA0",
+            "JSESSIONID=23B56BD824DE1CE08E40E54B5BE213DE",
+            "JSESSIONID=2339E90D9F99CC85EDB9DBDAFA562512",
+            "JSESSIONID=3938BE52AE71CFAAAB97749E90592F8C",
+            "JSESSIONID=110FB3040EA5975A6467C1C3F0A068FA"
+        ]
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "status 200": {
+                    "name": "status 200",
+                    "path": "::status 200",
+                    "id": "fad9fa412b86fcb03bee97c80dcd61f1",
+                    "passes": 11959,
+                    "fails": 0
+                },
+                "body present": {
+                    "name": "body present",
+                    "path": "::body present",
+                    "id": "6e1f540843b26d161cf12df4ff640ca6",
+                    "passes": 11959,
+                    "fails": 0
+                },
+                "latency <5000ms": {
+                    "id": "909675274ebbbe558875aa20ee23ef55",
+                    "passes": 11959,
+                    "fails": 0,
+                    "name": "latency <5000ms",
+                    "path": "::latency <5000ms"
+                }
+            }
+    }
+}

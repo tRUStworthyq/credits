@@ -40,3 +40,5 @@ build/
 transaction-service/
 
 .idea/
+
+mock-producer/settings.xml
