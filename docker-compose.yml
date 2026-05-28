@@ -18,6 +18,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - data-net
 
   postgres-keycloak:
     image: postgres:15
@@ -38,6 +40,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - data-net
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
@@ -58,6 +62,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - data-net
 
   kafka:
     image: confluentinc/cp-kafka:7.4.4
@@ -90,6 +96,8 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
+    networks:
+      - data-net
 
   kafka-init:
     image: confluentinc/cp-kafka:7.4.4
@@ -109,6 +117,8 @@ services:
       kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic transaction-results      --partitions 3 --replication-factor 1
       exit 0
       "
+    networks:
+      - data-net
 
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
@@ -127,6 +137,8 @@ services:
     depends_on:
       kafka:
         condition: service_healthy
+    networks:
+      - data-net
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest
@@ -162,6 +174,9 @@ services:
       interval: 5s
       timeout: 5s
       retries: 30
+    networks:
+      - app-net
+      - data-net
 
   jaeger:
     image: jaegertracing/all-in-one:latest
@@ -179,6 +194,8 @@ services:
       resources:
         limits:
           memory: 384m
+    networks:
+      - monitoring-net
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
@@ -202,6 +219,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - monitoring-net
 
   logstash:
     image: docker.elastic.co/logstash/logstash:8.11.0
@@ -223,6 +242,8 @@ services:
     depends_on:
       elasticsearch:
         condition: service_started
+    networks:
+      - monitoring-net
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.11.0
@@ -239,6 +260,8 @@ services:
     depends_on:
       elasticsearch:
         condition: service_started
+    networks:
+      - monitoring-net
 
   prometheus:
     image: prom/prometheus:latest
@@ -258,6 +281,8 @@ services:
       resources:
         limits:
           memory: 320m
+    networks:
+      - monitoring-net
 
   grafana:
     image: grafana/grafana:latest
@@ -277,8 +302,8 @@ services:
           memory: 512m
     depends_on:
       - prometheus
-
-
+    networks:
+      - monitoring-net
 
 
   currency-service:
@@ -301,6 +326,9 @@ services:
       resources:
         limits:
           memory: 512m
+    networks:
+      - app-net
+      - monitoring-net
 
 
   deal-service:
@@ -338,6 +366,10 @@ services:
       interval: 15s
       timeout: 5s
       retries: 10
+    networks:
+      - app-net
+      - data-net
+      - monitoring-net
 
   client-service:
     image: admin194/client-service:latest
@@ -359,6 +391,10 @@ services:
       resources:
         limits:
           memory: 896m
+    networks:
+      - app-net
+      - data-net
+      - monitoring-net
 
   risk-service:
     image: admin194/risk-service:latest
@@ -384,6 +420,10 @@ services:
       resources:
         limits:
           memory: 896m
+    networks:
+      - app-net
+      - data-net
+      - monitoring-net
 
   frontend:
     image: admin194/frontend:latest
@@ -400,6 +440,8 @@ services:
       interval: 15s
       timeout: 5s
       retries: 5
+    networks:
+      - frontend-net
 
   api-gateway:
     image: admin194/api-gateway:latest
@@ -427,6 +469,10 @@ services:
       resources:
         limits:
           memory: 896m
+    networks:
+      - frontend-net
+      - app-net
+      - monitoring-net
 
   transaction-service:
     image: admin194/transaction-service:latest
@@ -449,6 +495,10 @@ services:
       resources:
         limits:
           memory: 768m
+    networks:
+      - app-net
+      - data-net
+      - monitoring-net
 
 volumes:
   postgres_deal_data:
@@ -456,3 +506,13 @@ volumes:
   prometheus_data:
   grafana_data:
   es_data:
+
+networks:
+  frontend-net:
+    driver: bridge
+  app-net:
+    driver: bridge
+  data-net:
+    driver: bridge
+  monitoring-net:
+    driver: bridge

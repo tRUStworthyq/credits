@@ -13,7 +13,7 @@
 | **Сборка** | Maven |
 | **Аутентификация** | Keycloak (OAuth2 / OpenID Connect) |
 | **База данных** | PostgreSQL 15 |
-| **Брокер сообщений** | Apache Kafka 7.4.4 + Zookeeper |
+| **Брокер сообщений** | Apache Kafka 7.4.4 + Zookeeper, Kafka Streams (transaction-service) |
 | **Межсервисный RPC** | REST (HTTP), gRPC (currency-service) |
 | **Кэширование** | Caffeine (курсы валют, TTL 10–15 мин) |
 | **Внешняя интеграция** | API ЦБ РФ — `cbr-xml-daily.ru/daily_json.js` |
@@ -50,6 +50,18 @@
 | `risk-service` | **8082** | Сервис оценки рисков (потребитель Kafka) |
 | `currency-service` (HTTP) | **8086** | Интеграция с ЦБ РФ, REST-эндпоинты |
 | `currency-service` (gRPC) | **9091** | gRPC-сервер для межсервисных вызовов |
+| `transaction-service` | **8087** | Обработка и валидация финансовых транзакций; Kafka Streams + RocksDB |
+
+### transaction-service
+
+`transaction-service` — сервис обработки финансовых транзакций, построенный на **Kafka Streams**. Ключевые особенности:
+
+- **Потребляет** топик `transaction-events` (события с полями: `transactionId`, `userId`, `amount`, `type: DEBIT/CREDIT`)
+- **Публикует** в топик `transaction-results` результаты с итогом `ACCEPTED` / `REJECTED` (причина: `INSUFFICIENT_FUNDS`)
+- **Не использует PostgreSQL** — состояние (баланс пользователей, архив результатов) хранится в персистентных RocksDB-хранилищах Kafka Streams (`user-balance-store`, `transaction-results-store`)
+- Предоставляет REST API для просмотра результатов транзакций и балансов пользователей:
+  - `GET /api/transactions` — постраничный список результатов (сортировка по дате или сумме)
+  - `GET /api/transactions/balances` — текущие балансы пользователей
 
 ### Инфраструктура
 
